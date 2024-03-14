@@ -16,6 +16,7 @@ import { IoIosNotifications } from "react-icons/io";
 import { FaClipboardList, FaBloggerB } from "react-icons/fa";
 import { SiBrandfolder } from "react-icons/si";
 import { BiCategoryAlt } from "react-icons/bi";
+import { FaSignOutAlt } from "react-icons/fa";
 import { Layout, Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
@@ -39,7 +40,10 @@ const MainLayout = () => {
           mode="inline"
           defaultSelectedKeys={[""]}
           onClick={({ key }) => {
-            if (key == "signout") {
+            if (key === "signout") {
+              localStorage.clear()
+              window.location.reload()
+              // navigate('/')
             } else {
               navigate(key);
             }
@@ -155,6 +159,11 @@ const MainLayout = () => {
               key: "enquiries",
               icon: <FaClipboardList className="fs-4" />,
               label: "Enquiries",
+            },
+            {
+              key: "signout",
+              icon: <FaSignOutAlt className="fs-4" />,
+              label: "Sign Out",
             },
           ]}
         />
